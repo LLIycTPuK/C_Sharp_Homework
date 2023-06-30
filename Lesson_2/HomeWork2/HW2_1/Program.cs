@@ -3,16 +3,16 @@
 
 // 123 / 10 ->12
 //123 / 100 ->1
-
+Console.WriteLine("Введите трехзначное число для отображения его второй цифры");
 int TakeNum(int num)
 {
-    Console.WriteLine(num);
+
     return num % 100;
 
 }
 
 
 
-int twolast_num = new Random().Next(100, 1000);
+int twolast_num = int.Parse(Console.ReadLine()!);
 int result = TakeNum(twolast_num);
 Console.WriteLine(result / 10);
