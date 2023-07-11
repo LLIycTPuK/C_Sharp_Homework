@@ -4,6 +4,8 @@ Console.WriteLine("                                  min: ");
 int min = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Введите количество чисел в массиве: ");
 int a = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введите число, для проверки его нахождения в массиве: ");
+int b = int.Parse(Console.ReadLine()!);
 int[] array = new int[a];
 
 void FillArray(int[] collection)
@@ -12,25 +14,12 @@ void FillArray(int[] collection)
     int index = 0;
     while (index < lenght)
     {
-        collection[index] = new Random().Next(min, max);
+        collection[index] = new Random().Next(min, max + 1);
         index++;
     }
 }
 
-void SumNegPos(int[] arr)
-{
-    int pos, neg;
-    pos = neg = 0;
 
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (arr[i] >= 0)
-        pos+=arr[i];
-        else
-        neg += arr[i];
-    }
-    Console.WriteLine($"Сумма положительных: {pos}, Сумма отрицательных: {neg}");
-}
 
 void PrintArray(int[] col)
 {
@@ -43,6 +32,15 @@ void PrintArray(int[] col)
     }
 }
 
+string CheckNum(int[] arr, int ch)
+{
+    for (int i = 0; i < array.Length; i++)
+
+        if (arr[i] == ch)
+            return "да";
+    return "нет";
+}
+
 FillArray(array);
 PrintArray(array);
-SumNegPos(array);
+Console.WriteLine(CheckNum(array, b));

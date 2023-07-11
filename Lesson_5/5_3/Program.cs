@@ -12,25 +12,12 @@ void FillArray(int[] collection)
     int index = 0;
     while (index < lenght)
     {
-        collection[index] = new Random().Next(min, max);
+        collection[index] = new Random().Next(min, max + 1);
         index++;
     }
 }
 
-void SumNegPos(int[] arr)
-{
-    int pos, neg;
-    pos = neg = 0;
 
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (arr[i] >= 0)
-        pos+=arr[i];
-        else
-        neg += arr[i];
-    }
-    Console.WriteLine($"Сумма положительных: {pos}, Сумма отрицательных: {neg}");
-}
 
 void PrintArray(int[] col)
 {
@@ -43,6 +30,18 @@ void PrintArray(int[] col)
     }
 }
 
+int CheckNum(int[] arr)
+{
+    int result = 0;
+    for (int i = 0; i < arr.Length; i++)
+
+        if (arr[i] > 10 && arr[i] < 100)
+            result++;
+    return result;
+
+}
+
 FillArray(array);
 PrintArray(array);
-SumNegPos(array);
+Console.WriteLine("");
+Console.WriteLine(CheckNum(array));
