@@ -17,11 +17,14 @@ Console.WriteLine(Sum(a));
 void ArraySum(int[] n)
 {
     string str = n.ToString();
-    for (int position = 0; position < str.Length; position++)
+    int lenght = str.Length;   !!
+    for (int position = 0; position < Length; position++)
     {
-        result +=  str[position];
+        double m =char.GetNumbericValue(str[position]); !!!!!
+        result +=  m;
         
     }
+    return result;
     }
 
 int a = int.Parse(Console.ReadLine()!);
