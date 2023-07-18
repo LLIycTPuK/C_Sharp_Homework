@@ -2,8 +2,7 @@
 int m = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Введите кол-во столбцов: ");
 int n = int.Parse(Console.ReadLine()!);
-Console.WriteLine("Введите искомую цифру: ");
-int a = int.Parse(Console.ReadLine()!);
+
 
 
 void PrintArray(int[,] matrix)
@@ -29,26 +28,27 @@ void FillArray(int[,] matrix)
     }
 }
 
-string Num(int[,] matrix)
+void Sum(int[,] matrix)
 {
 
+    double result = 0;
+    double c = 0;
     for (int i = 0; i < m; i++)
     {
+
         for (int j = 0; j < n; j++)
         {
-            if (matrix[i, j] == a)
-            {
-                return $"[{i + 1}, {j + 1}]";
-            }
+            result += matrix[i, j];
 
 
         }
+        c = Math.Round(result / n, 1);
+        Console.Write($"{c}; ");
+        result=0;
+
     }
-    return "такого числа нет в матрице";
-
 }
-
 int[,] matrix = new int[m, n];
 FillArray(matrix);
 PrintArray(matrix);
-Console.WriteLine(Num(matrix));
+Sum(matrix);

@@ -2,8 +2,10 @@
 int m = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Введите кол-во столбцов: ");
 int n = int.Parse(Console.ReadLine()!);
-Console.WriteLine("Введите искомую цифру: ");
+Console.WriteLine("Введите позицию искомого числа в столбце: ");
 int a = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введите позицию искомого числа в строке: ");
+int b = int.Parse(Console.ReadLine()!);
 
 
 void PrintArray(int[,] matrix)
@@ -29,26 +31,20 @@ void FillArray(int[,] matrix)
     }
 }
 
-string Num(int[,] matrix)
+string Search(int[,] matrix)
 {
-
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            if (matrix[i, j] == a)
-            {
-                return $"[{i + 1}, {j + 1}]";
-            }
-
-
+            if (i + 1 == a && j + 1 == b)
+                return $"{matrix[i, j]}";
         }
     }
-    return "такого числа нет в матрице";
-
+    return "Такого числа в массиве нет";
 }
 
 int[,] matrix = new int[m, n];
 FillArray(matrix);
 PrintArray(matrix);
-Console.WriteLine(Num(matrix));
+Console.WriteLine(Search(matrix));
