@@ -8,9 +8,7 @@ Console.WriteLine("Введите максимальное число: ");
 int b = int.Parse(Console.ReadLine()!);
 
 int[,] matrix = new int[m, n];
-int min_m = 0;
-int min_n = 0;
-
+int[] indexes = new int[2];
 
 void PrintArray(int[,] matrix)
 {
@@ -37,22 +35,29 @@ void FillArray(int[,] matrix)
     }
 }
 
-void Find(int[,] matrix)
+int[] Find(int[,] matrix)
 {
-    int[,] min = new int[min_m, min_n];
+    int row = matrix.GetLength(0);
+    int col = matrix.GetLength(1);
+    int min_num = matrix[0, 0];
+    int[] indexes = new int[2];
 
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < row; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < col; j++)
         {
-            if (matrix[i, j] < matrix[i, j + 1])
+            if (min_num > matrix[i, j])
             {
-                min[min_m, min_n] = matrix[i, j];
+                min_num = matrix[i, j];
+                indexes[0] = i;
+                indexes[1] = j;
             }
-            Console.WriteLine($"{min[min_m, min_n]}");
+
         }
 
     }
+    Console.WriteLine(matrix[indexes[0], indexes[1]]);
+    return indexes;
     /*for (int i = 0; i < m - 1; i++)
     {
         if (matrix[i, j] < min[min_m, min_n])
@@ -61,28 +66,21 @@ void Find(int[,] matrix)
 }
 
 
-void PrintNewArray(int[,] matrix)
+void PrintNewArray(int[,] matrix, int[] indexes)
 {
+    int row = matrix.GetLength(0);
+    int col = matrix.GetLength(1);
 
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < row; i++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < col; j++)
         {
-            if (i == min_m || j == min_n)
-            {
-                Console.Write("");
-            }
+            if (indexes[0] == i || indexes[1] == j) continue;
+            else Console.Write($"{matrix[i, j],3}");
         }
+        Console.WriteLine();
     }
-
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            Console.Write($"{matrix[i, j],3} ");
-        }
-    }
-
+    Console.WriteLine();
 
 }
 Console.WriteLine();
@@ -90,4 +88,4 @@ Console.WriteLine();
 FillArray(matrix);
 PrintArray(matrix);
 Find(matrix);
-PrintNewArray(matrix);
+PrintNewArray(matrix, indexes);
